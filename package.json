@@ -1,0 +1,39 @@
+{
+  "name": "lurker",
+  "version": "1.0.0",
+  "description": "Browse four channel threads from the command line",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Announcement/lurker.git"
+  },
+  "keywords": [
+    "4chan",
+    "browser",
+    "terminal",
+    "cmd",
+    "cli",
+    "api",
+    "tty",
+    "shell",
+    "text",
+    "utility"
+  ],
+  "author": "Jacob Francis Powers",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/Announcement/lurker/issues"
+  },
+  "homepage": "https://github.com/Announcement/lurker#readme",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "commander": "^2.9.0",
+    "msgpack-lite": "^0.1.13"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4"
+  }
+}
