@@ -5,10 +5,15 @@ require! {
     './helper': \helper
     './clean': \pretty
 }
+
 start = new Date!
-program.parse(process.argv);
+program
+    .option '-b [board], --board [board]', 'if no board is specified it will be searched for'
+    .parse(process.argv);
+
 goal = program.args[0]
-process.exit(1) unless goal
+process.exit(1) unless parseInt goal
+
 #module.exports = ->
     #watch.apply this, program.args
 
@@ -33,6 +38,7 @@ fetch config_board, ->
     boards = it.boards
 
     for board in boards
+        continue if program.board and program.board !~= board.board
         scan-queue.push board
     seconds = scan-queue.length * 10
     minutes = Math.floor seconds / 60
@@ -41,6 +47,7 @@ fetch config_board, ->
     fetch-threads!
 delay = new Date!
 target = {}
+
 fetch-threads = ->
     return unless scan-queue.length
     current = scan-queue.shift!
@@ -55,17 +62,26 @@ fetch-threads = ->
                     #print "Found thread on #{current.board} page #{page.page}"
                     target := {board: current.board, thread: goal}
                     fetch-thread!
+                    set-interval fetch-thread, 10000
                     scan-queue := []
                     return
         set-timeout fetch-threads, Math.max(now - delay, 1000)
 
+thread-cache = null
 
 fetch-thread = ->
     now = new Date!
     seconds = now - start
     config_thread = make 'thread', board: target.board, thread: target.thread
     fetch config_thread, ->
-        pretty.show- nthread it
+        unless thread-cache
+            pretty.show-thread it
+        else
+            old-posts = thread-cache.posts.length
+            new-posts = it.posts.slice old-posts
+            pretty.show-thread {posts: new-posts}
+
+        thread-cache := it
     #print "that threa d has been found in #{seconds}"
 
 #boards =

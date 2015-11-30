@@ -40,14 +40,16 @@ display-header = ->
 file-name = ->
     print chalk.red it.filename + it.ext
 
-show-thread = (thread) ->
-    for post in thread.posts
+show-post = (post) ->
         display-header post
 
-        return file-name post unless post.com
-
-        print beautify-comment post.com
+        file-name post if post.filename
+        print beautify-comment post.com if post.com
         print ''
+
+show-thread = (thread) ->
+    for post in thread.posts
+        show-post post
 
 exports.show-thread = show-thread
 
