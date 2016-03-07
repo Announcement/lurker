@@ -1,9 +1,9 @@
 require! <[http chalk]>
 
-#global.color = true
-
 protocol = if (global.secure) then 'https' else 'http'
+
 domain = 'a.4cdn.org'
+
 sources =
     boards: 'boards'
 
@@ -88,3 +88,10 @@ exports.reference = reference-to
 # where %b is BOARD
 # where %n is PAGE
 # where %t is THREAD
+
+# http(s)://a.4cdn.org/board/thread/threadnumber.json
+# http(s)://a.4cdn.org/board/pagenumber.json
+# http(s)://a.4cdn.org/board/catalog.json
+# http(s)://a.4cdn.org/board/threads.json
+# http(s)://a.4cdn.org/board/archive.json
+# http(s)://a.4cdn.org/boards.json

@@ -8,6 +8,7 @@ print = ->
     console.log.apply console, &
 
 beautify-comment = (comment) ->
+    url = /((http|ftp)s?\:\/\/)(\w+\.){1,}[a-z]{2,}(\/\S*)*/gi
     comment = comment.replace(/<br\s*\/?>/g, '\n')
     comment = comment.replace(/<[^>]+>/g, '')
     comment = comment.replace(/&gt;/g, '>')
@@ -23,7 +24,7 @@ beautify-comment = (comment) ->
     comment = comment.replace />>\d+/gim, ->
         chalk.yellow.bold it
 
-    comment = comment.replace /((http|ftp)s?\:\/\/)(\w+\.){1,}[a-z]{2,}(\/\S*)*/gi, ->
+    comment = comment.replace url, ->
         chalk.blue it
 
     comment
