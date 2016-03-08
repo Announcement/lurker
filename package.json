@@ -1,10 +1,10 @@
 {
-  "name": "Four",
-  "version": "1.0.0",
+  "name": "Lurker",
+  "version": "2.0.0",
   "description": "Browse four channel threads from the command line",
-  "main": "index.js",
+  "main": "bin/four",
   "scripts": {
-    "start": "bin/four.js",
+    "start": "bin/four",
     "test": "mocha"
   },
   "repository": {
@@ -32,10 +32,16 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "commander": "^2.9.0",
+    "gulp": "^3.9.1",
+    "gulp-jsbeautifier": "^1.0.2",
+    "gulp-plumber": "^1.1.0",
+    "jasmine": "^2.4.1",
     "livescript": "^1.4.0",
-    "msgpack-lite": "^0.1.13"
+    "mocha": "^2.4.5",
+    "msgpack-lite": "^0.1.17"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "gulp": "^3.9.0",
     "gulp-batch": "^1.0.5",
     "gulp-jsbeautifier": "^1.0.1",

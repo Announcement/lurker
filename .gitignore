@@ -27,12 +27,4 @@ build/Release
 node_modules
 
 *.map
-bin
-helpers*
-test*
-lzw*
-parameter*
-*.flv
-*.bat
-index.js
-thread.json
+*.js
